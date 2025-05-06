@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page_title }}{% endblock %}
+
+{% block content %}
+    <h2>{{ heading }}</h2>
+    <div class="grid">
+        {% if movie.poster_image %}
+        <div class="poster">
+            <img src="{{ movie.poster_image.url }}" alt="Poster for {{ movie.title }}">
+        </div>
+        {% endif %}
+        <div class="text-content">
+            <h2>{{ movie.title }} <span class="date">{{ movie.release_year }}</span></h2>
+            
+        </div>
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="grid">
+            <button type="submit" class="submit-btn">{{ button_text }}</button>
+        </div>
+    </form>
+
+    <form action="{{ cancel_url }}" method="get">
+        <div class="grid">
+            <button type="submit" class="delete-btn" onClick="return confirmCancel()">Cancel</button>
+        </div>
+    </form>
+{% endblock %}

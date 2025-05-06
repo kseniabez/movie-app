@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ review.movie.title }} - Review{% endblock %}
+
+{% block content %}
+    <h1>{{ review.movie.title }} - Review</h1>
+    {% include 'movies/review-card.html' with review=review expanded=True %}
+
+    {% if review.user == user %}
+        <div class="grid">
+         <a href="{% url 'edit_review' review_id=review.id %}" class="submit-btn">Edit Review</a>
+        <form action="{% url 'review_detail' review_id=review.id %}" method="POST" id="deleteReviewForm">
+        {% csrf_token %}
+            <input type="hidden" name="delete_review" value="true" >
+            <button type="submit" class="delete-btn" onClick="return confirmDelete()">Delete Review</button>
+        </form>
+        </div>
+        
+    {% endif %}
+    
+    <h2>Comments</h2>
+    <div class="comments" id="comments-container">
+        {% for comment in comments %}
+            {% include 'movies/comment-card.html' with comment=comment %}
+        {% empty %}
+            <p>No comments yet.</p>
+        {% endfor %}
+    </div>
+
+    {% if user.is_authenticated %}
+        <h3>Add a Comment</h3>
+        <form method="post" id="comment-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="submit-btn">Post Comment</button>
+    </form>
+    {% else %}
+        <p><a href="/login">Log in</a> to post a comment.</p>
+    {% endif %}
+{% endblock %}

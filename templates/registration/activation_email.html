@@ -1,0 +1,12 @@
+{% autoescape off %}
+Hi {{ user.get_username }},
+You're receiving this email because you've just created an account in MovieReviews.
+
+Please click the link below to activate your account:
+{{ activation_link }}
+
+If you didn't sign up, you can ignore this email.
+
+Thanks,
+The MyMovies Team
+{% endautoescape %}

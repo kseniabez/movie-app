@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        {% endblock %}
+        | Movie Reviews
+    </title>
+    {% load static %}
+    <script src="{% static 'comments.js' %}"></script>
+    <script src="{% static 'validation.js' %}"></script> 
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+    <nav>
+    <div class="left-links">
+        <a href="/">Home</a>
+        <a href="/movies">Movies</a>
+        <a href="/about">About</a>
+    </div>
+    
+    <div class="right-links">
+        {% if user.is_authenticated %}
+            <a href="{% url 'user_account' request.user.id %} " class="highlight">My Profile</a>
+            <a href="{% url 'logout' %}">Log out</a>
+        {% else %}
+            <a href="/login">Log in</a>
+            <a href="/register" class="highlight">Sign Up</a>
+        {% endif %}
+    </div>
+    </nav>
+</header>
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+<footer>
+    &copy; {% now "Y" %} Ksenia Biazruchanka • Powered by <a href="https://www.djangoproject.com">Django</a>
+</footer>
+</body>
+</html>

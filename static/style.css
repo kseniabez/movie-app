@@ -1,0 +1,392 @@
+html {
+    position: relative;
+    min-height: 100vh;
+
+    font-family: 'Roboto Condensed', 'Open Sans', Arial, Helvetica, sans-serif;
+    background-color: #1d2228;
+    color: #8c99a8;
+}
+
+body {
+    margin: 0;
+}
+
+main {
+    margin: auto;
+    padding: 2em 4em 40px;
+
+    max-width: 800px;
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 1em 1em 30px;
+        max-width: 100%;
+    }
+}
+
+section {
+    margin-top: 4em;
+}
+
+p {
+    text-align: justify;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+nav {
+    background-color: #121417;
+    backdrop-filter: blur(10px);
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav .left-links,
+nav .right-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+nav .left-links {
+    flex: 1;
+}
+
+nav .right-links {
+    flex: 1;
+    justify-content: flex-end;
+}
+
+nav img {
+    max-height: 40px;
+}
+nav a {
+    margin: 0 5px;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #8c99a8;
+}
+
+
+a:hover {
+    color: #ffffff;
+}
+.highlight {
+    color: #25cf20;
+}
+.header-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-link a {
+    text-decoration: none;
+    color: #8c99a8;
+    font-weight: bold;
+}
+.header-link a:hover {
+    color: #25cf20;
+}
+
+
+article {
+    margin: 1em 0;
+    padding: 1px 0 1em;
+    border-top: 1px solid #8c99a8;
+}
+
+article a {
+    float: right;
+    margin: 1em 0;
+
+    color: #8c99a8;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+article a::after {
+    content: " →";
+}
+article a.username {
+    font-size: 1em;
+    float: none;
+    margin: 0;
+    color: white;
+    text-decoration: none;
+}
+article a:hover {
+    color: #25cf20;
+}
+article a.username::after {
+     content: "";
+}
+
+article h1, h2 {
+    margin-bottom: 0.2em;
+    color: white;
+}
+p.date {
+    margin: 0;
+    padding: 0;
+    font-size: 0.8em;
+}
+span.date {
+    font-family: 'Arial', sans-serif;
+    color: #8c99a8;
+    font-weight: normal;
+}
+
+
+
+div.comments {
+    margin: 2em;
+}
+
+p.author {
+    margin: 0;
+    padding: 0;
+}
+
+p.comment {
+    margin-top: 0.2em;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 1.2em;
+}
+
+footer {
+    position: absolute;
+    box-sizing: border-box;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    padding: 12px;
+    background-color: #121417;
+
+    color: #d8d8d8;
+    font-size: smaller;
+    font-weight: 500;
+}
+
+footer a {
+    color: #d8d8d8;
+}
+
+footer a:hover {
+    color: white;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 1em;
+    align-items: start;
+    padding-top: 1em;
+
+}
+@media screen and (max-width: 768px) {
+    .grid {
+        grid-template-columns: 100px 1fr;
+        gap: 0.8em;
+    }
+}
+.poster img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid white;
+}
+
+@media screen and (max-width: 768px) {
+    .poster img {
+        margin: 0;
+    }
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.submit-btn {
+    background-color: #25cf20;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.submit-btn:hover {
+    background-color: #208b1e;
+}
+
+.delete-btn {
+    background-color: #cf2020;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-btn:hover {
+    background-color: #8b1e1e;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border-top: 1px solid #8c99a8;
+    border-bottom: 1px solid #8c99a8;
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #8c99a8;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.form-control {
+    background-color: #121417;
+    border: 1px solid #8c99a8;
+    border-radius: 5px;
+    color: #8c99a8;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    resize: vertical;
+    height: 6em;
+    margin: 15px 15px 0 0;
+}
+
+input[type="file"].form-control-file {
+    background-color: #121417;
+    border: 1px solid #8c99a8;
+    color: #8c99a8;
+    padding: 10px;
+    border-radius: 5px;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+}
+
+input[type="file"].form-control-file::file-selector-button {
+    background-color: #25cf20;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input[type="file"].form-control-file::file-selector-button:hover {
+    background-color: #208b1e;
+}
+
+.movies-container {
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination a {
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.profile-info {
+    text-align: center;
+    margin: 30px auto;
+    padding: 20px;
+    max-width: 600px;
+    color: #fff;
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.profile-info h1 {
+    text-align: center;
+    font-size: 2em;
+    margin: 10px 0;
+}
+
+.profile-info p {
+    text-align: center;
+    font-size: 1.2em;
+    color: #bbb;
+    margin-top: 10px;
+}
+
+.review-container {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.rating {
+    display: inline-block;
+    font-size: 20px;
+    margin: 0;
+}
+
+.yellow-star {
+    color: gold;
+}
+
+.grey-star {
+    color: lightgrey;
+}

@@ -1,0 +1,9 @@
+<article>
+    <div class="grid">
+        <div>
+            <a class="username" href="{% url 'user_account' comment.user.id %}">{{ comment.user.username }}</a>
+            <p><small>{{ comment.created_at|date:"F j, Y, g:i a" }}</small></p>
+        </div>
+        <p>{{ comment.content }}</p>
+    </div>
+</article>

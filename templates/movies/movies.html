@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="movies-container">
+    <h1>Movies</h1>
+    <div class="movie-grid">
+        {% for movie in page_obj %}
+        <div class="poster">
+            <a href="{% url 'movie_detail' movie.id %}">
+                <img src="{{ movie.poster_image.url }}" alt="{{ movie.title }}">
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+        
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+        
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Next</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

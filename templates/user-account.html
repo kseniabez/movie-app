@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}User Account{% endblock %}
+
+{% block content %}
+    <div class="profile-info">
+        {% if profile.avatar %}
+        <img src="{{ profile.avatar.url }}" alt="Avatar" class="avatar">
+        {% else %}
+        <img src="/media/avatars/default_avatar.jpg" alt="Default Avatar" class="avatar">
+        {% endif %}
+        <h1>{{ user_acc.username}}</h1>
+        <p> {{ profile.bio|default:"No bio available" }}</p>
+        {% if is_own_account %}
+            <p><a href="{% url 'edit_profile' user_id=user_acc.id %}">Edit Profile</a></p>
+        {% endif %}
+    </div>
+    
+
+    {% if is_own_account %}
+        <h2>Your Reviews</h2>
+    {% else %}
+        <h2>{{ user_acc.username }}'s Reviews</h2>
+    {% endif %}
+
+    <div class="user-reviews">
+        {% for review in user_reviews %}
+            {% include 'movies/review-card.html' with review=review expanded=False %}
+        {% empty %}
+            <p>{{ user_acc.username }} hasn't written any reviews yet.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

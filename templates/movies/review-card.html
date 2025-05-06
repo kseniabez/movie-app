@@ -1,0 +1,35 @@
+{% load custom_tags %}
+<article>
+        
+    {% if only_text %}
+        <p>Review by <a class="username" href="{% url 'user_account' review.user.id %}">{{ review.user.username }}</a></p>
+        <p>{{ review.content|truncatewords:35 }}</p>
+        <a href="{% url 'review_detail' review.id %}">Read more</a>      
+        <p class="date">Published on {{ review.created_at|date:"F j, Y, g:i a" }}</p>
+    {% else %}
+        <div class="grid">
+            <div class="poster">
+                <img src="{{ review.movie.poster_image.url }}" alt="Poster for {{ review.movie.title }}">
+            </div>
+            <div class="text-content">
+                <div>Review by <a class="username" href="{% url 'user_account' review.user.id %}">{{ review.user.username }}</a></div>
+                <h2>{{ review.movie.title }} <span class="date">{{ review.movie.release_year }}</span></h2>
+                {% if review.rating > 0 %}
+                    <div class="rating">
+                    {% for i in 5|create_range %}
+                        <span class="{% if i < review.rating %}yellow-star{% else %}grey-star{% endif %}">★</span>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+                {% if not expanded %}
+                    <p>{{ review.content|truncatewords:25 }}</p>
+                    <a href="{% url 'review_detail' review.id %}">Read more</a>
+                {% endif %}
+                <p class="date">Published on {{ review.created_at|date:"F j, Y, g:i a" }}</p>
+            </div>
+        </div>
+        {% if expanded %}
+        <p>{{ review.content|linebreaksbr }}</p>
+        {% endif %}
+    {% endif %}
+</article>

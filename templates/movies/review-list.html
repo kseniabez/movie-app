@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}User Reviews{% endblock %}
+
+{% block content %}
+    <h1>Reviews by {{ reviews.first.user.username }}</h1>
+    <div class="reviews-list">
+        {% for review in reviews %}
+            {% include 'movies/review-card.html' with review=review expanded=False %}
+        {% empty %}
+            <p>This user has not written any reviews yet.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

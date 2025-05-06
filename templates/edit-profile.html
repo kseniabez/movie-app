@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+    <div class="profile-container">
+        <div class="profile-info">
+            <h2>{{ user.username }}'s Profile</h2>
+
+            {% if profile.avatar %}
+            <img src="{{ profile.avatar.url }}" alt="Avatar" class="avatar">
+            {% else %}
+            <img src="/media/avatars/default_avatar.jpg" alt="Default Avatar" class="avatar">
+            {% endif %}
+            
+            <p>{{ profile.bio|default:"No bio available" }}</p>
+        </div>
+        
+        <div class="form-container">
+            <h2>Update Profile</h2>
+            <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+                {{ form.as_p }}
+            <button type="submit" class="submit-btn">Update Profile</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

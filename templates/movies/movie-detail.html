@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+    
+{% block content %}
+    <article>
+<div class="movie-detail-container">
+    
+    <div class="grid">
+            <div class="poster">
+                <img src="{{ movie.poster_image.url }}" alt="{{ movie.title }}" class="poster">
+            </div>
+            <div class="text-content">
+                <h2>{{ movie.title }} <span class="date">{{ movie.release_year }}</span></h2>
+                <p>Directed by {{ movie.director }}</p>
+                <p>{{ movie.description }}</p>
+                
+                {% if user.is_authenticated %}
+                <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <h3><a href="{% url 'write-review' movie_id=movie.id %}" class="btn btn-primary">Review This Movie!</a></h3>
+                </form>
+                {% else %}
+                 <p><a href="/login">Log in to post a review</a></p>
+                {% endif %}
+            </div>
+        </div>
+
+    
+
+    <h2>Latest Reviews</h2>
+    <div class="reviews">
+        {% for review in reviews %}
+            {% include 'movies/review-card.html' with review=review only_text=True %}
+        {% empty %}
+            <p>No reviews available</p>
+        {% endfor %}
+    </div>
+</div>
+    
+</article>
+{% endblock %}

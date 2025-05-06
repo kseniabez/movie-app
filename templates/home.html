@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h1>Latest Reviews</h1>
+    <div class="reviews-list">
+        {% for review in reviews %}
+            {% include 'movies/review-card.html' with review=review expanded=False %}
+        {% empty %}
+            <p>No reviews available.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
