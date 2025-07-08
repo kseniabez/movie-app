@@ -7,8 +7,8 @@ This project was developed as an exploration of Django web application developme
 
 <div style="display: flex; justify-content: center; gap: 10px;">
 
-  <img src="https://github.com/kseniabez/kseniabez.github.io/blob/main/projects/movie-app/img/image3.png?raw=true" alt="Screenshot 1" width="33%">
-  <img src="https://github.com/kseniabez/kseniabez.github.io/blob/main/projects/movie-app/img/image4.png?raw=true" alt="Screenshot 2" width="33%">
-  <img src="https://github.com/kseniabez/kseniabez.github.io/blob/main/projects/movie-app/img/image5.png?raw=true" alt="Screenshot 3" width="33%">
+  <img src="https://github.com/kseniabez/kseniabez.github.io/blob/main/projects/movie-app/img/image3.png?raw=true" alt="Screenshot 1" width="30%">
+  <img src="https://github.com/kseniabez/kseniabez.github.io/blob/main/projects/movie-app/img/image4.png?raw=true" alt="Screenshot 2" width="30%">
+  <img src="https://github.com/kseniabez/kseniabez.github.io/blob/main/projects/movie-app/img/image5.png?raw=true" alt="Screenshot 3" width="30%">
 
 </div>
